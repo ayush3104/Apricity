@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dr1mlxy5ql50t"]
 
 [ext_resource type="Script" uid="uid://dgmgssrdornut" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://gjio80gh0rjf" path="res://models/Chicken by jeremy - 1YE8U35HXsI.glb" id="2_0xm2m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uj04i"]
 size = Vector3(30, 1, 30)
@@ -22,8 +23,6 @@ glow_enabled = true
 glow_intensity = 0.21
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vpupq"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_uj04i"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
 friction = 0.8
@@ -63,14 +62,18 @@ environment = SubResource("Environment_uj04i")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_ig7tw")
 
+[node name="Chicken by jeremy - 1YE8U35HXsI" parent="Player" unique_id=2027298653 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(-2.1855694e-10, 0, -0.005, 0, 0.005, 0, 0.005, 0, -2.1855694e-10, 0, -1, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=393642195]
 shape = SubResource("CapsuleShape3D_vpupq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1351501102]
-mesh = SubResource("CapsuleMesh_uj04i")
+[node name="SpringArm3D" type="SpringArm3D" parent="Player" unique_id=1292703422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+spring_length = 4.0
+margin = 0.2
 
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=380383436]
-transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 2, 5)
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D" unique_id=1153034126]
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=779872182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5059426, -3.826131)

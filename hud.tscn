@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://jfph2h5a027r"]
+
+[ext_resource type="Script" uid="uid://7a3m8l6w4xga" path="res://hud.gd" id="1_37p78"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uj04i"]
+
+[node name="HUD" type="Control" unique_id=1428359978]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_37p78")
+
+[node name="CanLabel" type="Label" parent="." unique_id=312400545]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 28
+text = "Cans : 0"
+label_settings = SubResource("LabelSettings_uj04i")
+horizontal_alignment = 2

@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c48lpsu5m3xay"]
+
+[ext_resource type="Script" uid="uid://xw051yg2qdky" path="res://soda_can.gd" id="1_qnfci"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uj04i"]
+height = 0.35
+radius = 0.12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uj04i"]
+albedo_color = Color(0.45830935, 0.09981362, 0.1744222, 1)
+metallic = 0.3
+roughness = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uj04i"]
+material = SubResource("StandardMaterial3D_uj04i")
+top_radius = 0.12
+bottom_radius = 0.12
+height = 0.35
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uj04i"]
+radius = 0.35
+
+[node name="Node3D" type="RigidBody3D" unique_id=1521081628]
+script = ExtResource("1_qnfci")
+
+[node name="SodaCan" type="RigidBody3D" parent="." unique_id=1932353197]
+mass = 0.3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SodaCan" unique_id=1063902237]
+shape = SubResource("CylinderShape3D_uj04i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SodaCan/CollisionShape3D" unique_id=1364284152]
+mesh = SubResource("CylinderMesh_uj04i")
+
+[node name="PickupZone" type="Area3D" parent="SodaCan" unique_id=313379784]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SodaCan/PickupZone" unique_id=2139129767]
+shape = SubResource("SphereShape3D_uj04i")

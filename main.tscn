@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dylwnvm4h7fqx" path="res://ScrapeTree.tscn" id="8_kek77"]
 [ext_resource type="PackedScene" uid="uid://d5djn8120ncy" path="res://Spacetree.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://bjue2um2j38fl" path="res://Tire.tscn" id="10_4c57u"]
+[ext_resource type="PackedScene" uid="uid://jfph2h5a027r" path="res://hud.tscn" id="11_efxa6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7h7mn"]
 
@@ -159,3 +160,5 @@ map_bounds = 140.0
 [node name="OasisWater" type="MeshInstance3D" parent="." unique_id=569821380]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 3.5, -80)
 mesh = SubResource("PlaneMesh_p5viw")
+
+[node name="HUD" parent="." unique_id=1428359978 instance=ExtResource("11_efxa6")]

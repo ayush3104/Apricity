@@ -54,7 +54,7 @@ func _ready() -> void:
 	col_shape.shape = h_shape
 	
 	# Scale collision bounds to match the 180x180 PlaneMesh
-	var scale_factor = 180.0 / float(map_width - 1)
+	var scale_factor = 400.0 / float(map_width - 1)
 	col_shape.scale = Vector3(scale_factor, 1.0, scale_factor)
 	col_shape.position = Vector3.ZERO
 	col_shape.rotation = Vector3.ZERO

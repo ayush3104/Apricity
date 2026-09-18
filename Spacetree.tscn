@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://d5djn8120ncy"]
+
+[ext_resource type="Script" uid="uid://tctgu0xq4yj1" path="res://scrape_tree.gd" id="1_0k663"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jc63w"]
+albedo_color = Color(0.3529412, 0.3372549, 0.36078432, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wmp3k"]
+material = SubResource("StandardMaterial3D_jc63w")
+top_radius = 0.15
+bottom_radius = 0.25
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7h7mn"]
+albedo_color = Color(0.49019608, 0.6, 0.44313726, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_km6hh"]
+material = SubResource("StandardMaterial3D_7h7mn")
+radius = 0.7
+height = 1.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j6tvk"]
+height = 3.0
+radius = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpupq"]
+albedo_color = Color(0.12156863, 0.16470589, 0.19607843, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wedum"]
+material = SubResource("StandardMaterial3D_vpupq")
+top_radius = 0.05
+bottom_radius = 0.2
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0udnx"]
+albedo_color = Color(0.36862746, 0.45490196, 0.3529412, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pv70j"]
+material = SubResource("StandardMaterial3D_0udnx")
+height = 0.7
+
+[node name="Node3D" type="Node3D" unique_id=1644235061]
+
+[node name="ScrapeTree" type="StaticBody3D" parent="." unique_id=1001706456]
+script = ExtResource("1_0k663")
+
+[node name="trunk" type="MeshInstance3D" parent="ScrapeTree" unique_id=1619945980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("CylinderMesh_wmp3k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrapeTree/trunk" unique_id=1962812297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2508004, 0)
+mesh = SubResource("SphereMesh_km6hh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScrapeTree" unique_id=757886963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CylinderShape3D_j6tvk")
+
+[node name="branches" type="Node3D" parent="ScrapeTree" unique_id=867944574]
+
+[node name="branch1" type="Node3D" parent="ScrapeTree/branches" unique_id=187687240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.11737871, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ScrapeTree/branches/branch1" unique_id=209976838]
+transform = Transform3D(0.61547047, 0.7881599, 0, -0.7881599, 0.61547047, 0, 0, 0, 1, 0.5218837, 1.7525766, 0)
+mesh = SubResource("CylinderMesh_wedum")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ScrapeTree/branches/branch1" unique_id=637295760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97221136, 1.9771966, 0)
+mesh = SubResource("SphereMesh_pv70j")

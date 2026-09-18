@@ -39,6 +39,11 @@ func _ready() -> void:
 			var py = int(clamp(float(z) / float(map_depth - 1) * (img_h - 1), 0, img_h - 1))
 			
 			var h = img.get_pixel(px, py).r
+			
+			# Plateau math matching main.gdshader
+			if h > 0.45 and h < 0.55:
+				h = lerp(h, 0.5, 0.6)
+				
 			heights[z * map_width + x] = h * height_scale
 
 	var h_shape = HeightMapShape3D.new()

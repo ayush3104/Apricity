@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dr1mlxy5ql50t"]
+
+[ext_resource type="Script" uid="uid://dgmgssrdornut" path="res://player.gd" id="1_ig7tw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uj04i"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7h7mn"]
+
+[sub_resource type="Sky" id="Sky_jc63w"]
+sky_material = SubResource("ProceduralSkyMaterial_7h7mn")
+
+[sub_resource type="Environment" id="Environment_uj04i"]
+background_mode = 2
+sky = SubResource("Sky_jc63w")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vpupq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uj04i"]
+
+[node name="main" type="Node3D" unique_id=358803946]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1874269075]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1457047220]
+shape = SubResource("BoxShape3D_uj04i")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D" unique_id=1476011714]
+size = Vector3(30, 1, 30)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=215289203]
+transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=962807119]
+environment = SubResource("Environment_uj04i")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=2140377145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_ig7tw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=393642195]
+shape = SubResource("CapsuleShape3D_vpupq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1351501102]
+mesh = SubResource("CapsuleMesh_uj04i")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=380383436]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 2, 5)

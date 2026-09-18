@@ -26,3 +26,10 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	# --- PUSH RIGIDBODIES (JUNK / CANS) ---
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			var push_dir = -c.get_normal()
+			var push_force = 4.0
+			c.get_collider().apply_central_impulse(push_dir * push_force)

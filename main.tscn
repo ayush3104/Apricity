@@ -5,6 +5,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_uj04i"]
 size = Vector3(30, 1, 30)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
+albedo_color = Color(0.7176471, 0.7882353, 0.70980394, 1)
+roughness = 0.73
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7h7mn"]
 
 [sub_resource type="Sky" id="Sky_jc63w"]
@@ -13,10 +17,28 @@ sky_material = SubResource("ProceduralSkyMaterial_7h7mn")
 [sub_resource type="Environment" id="Environment_uj04i"]
 background_mode = 2
 sky = SubResource("Sky_jc63w")
+tonemap_mode = 3
+glow_enabled = true
+glow_intensity = 0.21
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vpupq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_uj04i"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.8
+bounce = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uj04i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5viw"]
+albedo_color = Color(0.3764706, 0.73333335, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uj04i"]
+material = SubResource("StandardMaterial3D_p5viw")
+top_radius = 0.4
+bottom_radius = 0.4
+height = 1.0
 
 [node name="main" type="Node3D" unique_id=358803946]
 
@@ -27,9 +49,12 @@ shape = SubResource("BoxShape3D_uj04i")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D" unique_id=1476011714]
 size = Vector3(30, 1, 30)
+material = SubResource("StandardMaterial3D_ig7tw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=215289203]
 transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
+light_color = Color(0.9454426, 0.7502489, 0.34346297, 1)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=962807119]
 environment = SubResource("Environment_uj04i")
@@ -46,3 +71,24 @@ mesh = SubResource("CapsuleMesh_uj04i")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=380383436]
 transform = Transform3D(1, 0, 0, 0, 0.9396926, 0.34202012, 0, -0.34202012, 0.9396926, 0, 2, 5)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=779872182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5059426, -3.826131)
+use_collision = true
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1965297128]
+transform = Transform3D(0.9997762, 0, -0.021157417, 0, 1, 0, 0.021157417, 0, 0.9997762, -1.701216, 0.7190168, -3.8870287)
+use_collision = true
+
+[node name="Junk can" type="RigidBody3D" parent="." unique_id=1916500334]
+transform = Transform3D(0.09447633, 0.9955271, 0, -0.9955271, 0.09447633, 0, 0, 0, 1, -2.0003738, 1.1657858, -6.6352)
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+linear_damp = 1.0
+angular_damp = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Junk can" unique_id=847206808]
+shape = SubResource("CylinderShape3D_uj04i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Junk can" unique_id=1572999240]
+transform = Transform3D(0.99996954, -0.0078089014, 0, 0.0078089014, 0.99996954, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_uj04i")
